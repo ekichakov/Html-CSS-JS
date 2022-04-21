@@ -1,0 +1,271 @@
+* {
+    box-sizing: border-box; /*размеры всех элементов на странице будут включать в себя размеры контента и рамки*/
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+}
+.container {
+    max-width: 1140px;/*для мобильной версии, если ширина меньше 1110рх, то контейнер сожмется */
+    margin-left: auto;/*выравниваем контейнер по центру*/
+    margin-right: auto;/*выравниваем контейнер по центру*/
+    /* background-color: darkslateblue; устанавливаем временно фон контейнера для настройки элементов */
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+}
+.none {
+    display: none !important;/*временно, чтобы не мешал при верстке portfolio, не отображать header. Если не добавить important, то не сработает, т.к. ниже header переопределяется display:flex */
+}
+/*Header//////////////////////////*/
+
+.header {
+    display: flex; /*задаем модель flex-box для блока .header*/
+    flex-direction: column; /* выстраиваем элементы в колонку/основная ось - колонка - ось Y*/
+    justify-content: center; /*выравнивание по основной оси, Y*/
+    align-items: center;/*выравнивание вдоль поперечной оси, Х*/ 
+
+    position: relative; /*'этот див является родителем для всех вложенных в него элементов с позиционированием абсолют - "стрелочка". относительно него будет происходить позиционирование "стрелочки"*/
+
+    width: 100%;
+    height: 100vh;  
+
+    /* background-color: #556983;
+    background-image: url("./../img/header/header-bg.jpg"); */
+    background-size: cover;
+    background-position: center;
+}
+.header_title {
+    margin: 0;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%; /*множитель 1.3 * 56 = 72.8*/
+    text-align: center;
+    color: #FFFFFF;
+}
+.header_subtitle {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%; /*1.5 * 16 = 24 */
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.header_arrow {
+    position: absolute; /*абсолютная позиция "стрелочки", вырвать из потока*/
+    bottom: 30px; /*опускаем "стрелочку вниз"*/
+    left: 50%; /*центруем "стрелочку"по центру*/
+    /*margin: -24px;/*т.к. стрелочка 48рх, смещаем ее наполовину. если изменятся размеры стрелочки, съедет центровка*/
+    transform: translate(-50%, 0);/*первый аргумент, смещение по оси Y(т.е. влево на 50%), второй аргумент,- смещение по оси Х(0) */
+
+    width: 48px;
+    height: 48px;
+    /* background: red; нужен был для позиционирования "стрелочки"*/
+}
+/*Portfolio//////////////////////////*/
+
+.portfolio {
+    /* background-color: darkseagreen;устанавливаем цвет фона для настройки контейнера */
+    padding-top: 80px;/*убираем отступы между header и portfolio, ставим их вплотную*/
+    padding-bottom: 115px;/*убираем отступы между footer и portfolio, ставим их вплотную*/
+}
+.portfolio_header {
+    margin: 0;/*обнуляем отступы заголовка*/
+    margin-bottom: 70px;/*устанавливаем отступ снизу согласно макета*/
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 130%;
+    text-align: center;
+    color: #000000;
+}
+.portfolio-cards-wrapper {
+    display: flex; /*устанавливаем карточки в ряд(строку)*/
+    flex-wrap: wrap;/*устанавливаем перенос карточек на следующую строку (по две карточки в строке*/
+    justify-content: space-between;/*прижимаем карточки по краям, оставляя середину*/
+}
+
+.card {
+    margin-bottom: 30px;/*устанавливаем расстояние между карточками сверху и снизу*/
+    max-width: 540px;/*ширина карточки согласно макета 540рх*/
+    /* padding: 20px;отступы согласно макета 20рх переносим в .card-link */
+    background-color: #fff;
+    box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35); /*устанавливаем тень от карточек согласно макета*/
+    transition: transform 0.3s ease-in;
+}
+.card:hover {
+    transform: translateY(-15px);
+}
+.card-link {
+    display: block;
+    padding: 20px;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease-in;
+}
+.card-link:hover {
+    color: rgb(39, 91, 236);
+}
+.card:last-child {
+    margin-bottom: 0;/*обращаемся через псевдокласс к последнему элементу-карточке и сбрасываем отступ снизу*/
+}
+.card:nth-last-child(2) {
+    margin-bottom: 0;/*обращаемся через псевдокласс к предпоследнему элементу-карточке и сбрасываем отступ снизу*/
+}
+
+.card-img {
+    margin-bottom: 20px;/*отстут от картинки до заголовка согласно макета 20рх*/
+
+}
+.card-title {
+    margin: 0;/*Убираем отступы заголовка h3,так как у заголовка есть отступы сверху и снизу*/
+    margin-bottom: 13px;/*выставляем отступ от параграфа согласно макету 13рх*/
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 130%;
+    /* color: #000000; */
+}
+.card p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* color: #000000; */
+}
+
+/*Footer//////////////////////*/
+.footer {
+    padding-top: 45px;
+    padding-bottom: 130px;
+    background: #1E4776;
+    color: white;
+}
+.footer-row {
+    display: flex;
+    justify-content: space-between ;
+}
+
+.footer-col {
+    max-width: 350px;
+    flex-grow: 1; /*блок растет до максимального размера*/
+}
+
+.footer-copyright {
+    color: #7E9EC9;
+    line-height: 1.3;
+}
+.footer-copyright-name {
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.footer-copyright p {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+
+
+.footer-icons p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.footer-icons-row {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icons-row > * + * {
+    margin-left: 30px;
+}
+
+.footer-button-vk {
+    display: inline-block;
+    height: 50px;
+    padding: 0 30px;
+    
+
+    border: 3px solid #fff;
+    border-radius: 50px;
+    line-height: 44px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;     
+    font-size: 16px;
+    text-transform: uppercase;
+
+    transition: all 0.3s ease-in;
+}
+.footer-button-vk:hover {
+    background-color: #fff;
+    color: #1E4776;
+}
+
+.footer-contacts p {
+    margin: 15px 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #7E9EC9;
+}
+
+/*Project /////////////////////////////*/
+.project {
+    padding: 80px 0 120px 0;
+    text-align: center;
+}
+.project-header {
+    margin: 0;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1.3;
+    color: #000000;
+}
+.project-img {
+    margin-bottom: 70px;
+}
+.project-description {
+    margin: 0 auto;
+    max-width: 730px;
+    margin-bottom: 60px;
+}
+.project-description p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.project-btn-back {
+    display: inline-block;
+    height: 60px;
+    padding: 0 30px;
+    
+
+    border: 3px solid #275BEC;
+    border-radius: 50px;
+    line-height: 54px;
+    text-decoration: none;
+    color: #275BEC;
+    font-weight: 700;     
+    font-size: 16px;
+    text-transform: uppercase;
+
+    transition: all 0.3s ease-in;
+}
+.project-btn-back:hover {
+    background-color: #275BEC;
+    color: white;
+}
